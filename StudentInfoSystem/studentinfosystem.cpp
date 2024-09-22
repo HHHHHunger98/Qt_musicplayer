@@ -1,12 +1,22 @@
 #include "studentinfosystem.h"
 #include "ui_studentinfosystem.h"
 #include <QMessageBox>
+#include <QSqlDatabase>
+#include <QDebug>
 
 StudentInfoSystem::StudentInfoSystem(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::StudentInfoSystem)
 {
     ui->setupUi(this);
+    qDebug() <<  QSqlDatabase::drivers();
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("localhost");
+    db.setDatabaseName("studentinfo");
+    db.setUserName("root");
+    db.setPassword("2024mySQL...");
+    bool ok = db.open();
+    qDebug() << ok;
 }
 
 StudentInfoSystem::~StudentInfoSystem()
