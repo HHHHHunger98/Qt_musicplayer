@@ -2,6 +2,8 @@
 #define STUDENTINFOSYSTEM_H
 
 #include <QMainWindow>
+#include <QButtonGroup>
+#include <QSqlDatabase>
 #include "systemui.h"
 
 QT_BEGIN_NAMESPACE
@@ -20,9 +22,13 @@ public:
 
 private slots:
     void on_pushButton_Login_clicked();
+    void slots_loginType();
 
 private:
     Ui::StudentInfoSystem *ui;
     SystemUI *sysui;
+    QButtonGroup *groupLoginType;
+    QString loginType;
+    QSqlDatabase db;
 };
 #endif // STUDENTINFOSYSTEM_H

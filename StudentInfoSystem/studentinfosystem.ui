@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>334</width>
-    <height>262</height>
+    <width>712</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>271</width>
-      <height>171</height>
+      <x>140</x>
+      <y>140</y>
+      <width>371</width>
+      <height>251</height>
      </rect>
     </property>
     <property name="title">
@@ -29,8 +29,8 @@
     <widget class="QPushButton" name="pushButton_Login">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>110</y>
+       <x>130</x>
+       <y>130</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -39,11 +39,11 @@
       <string>Login</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>40</y>
+       <x>70</x>
+       <y>50</y>
        <width>212</width>
        <height>54</height>
       </rect>
@@ -79,6 +79,39 @@
       </item>
      </layout>
     </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>180</y>
+       <width>250</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="login_layout">
+      <item>
+       <widget class="QRadioButton" name="radioButton_Student">
+        <property name="text">
+         <string>Student</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_Teacher">
+        <property name="text">
+         <string>Teacher</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_Administrator">
+        <property name="text">
+         <string>Administrator</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -86,7 +119,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>334</width>
+     <width>712</width>
      <height>21</height>
     </rect>
    </property>
