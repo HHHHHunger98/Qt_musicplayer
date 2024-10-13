@@ -1,8 +1,10 @@
 #include "studentinfosystem.h"
 #include "ui_studentinfosystem.h"
+#include "databaseconnectionsingleton.h"
+#include "globals.h"
+
 #include <QMessageBox>
 #include <QDebug>
-#include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -12,16 +14,23 @@ StudentInfoSystem::StudentInfoSystem(QWidget *parent)
     , ui(new Ui::StudentInfoSystem)
 {
     ui->setupUi(this);
+    ui->lineEdit_Password->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_UserID->setText("1");
+    ui->lineEdit_Password->setText("123456");
+
     groupLoginType = new QButtonGroup(this);
     groupLoginType->addButton(ui->radioButton_Student,0);
     groupLoginType->addButton(ui->radioButton_Teacher,1);
     groupLoginType->addButton(ui->radioButton_Administrator,2);
     ui->radioButton_Student->setChecked(true);
     loginType = "Students";
+    primaryKeyForQuery = "std_id";
 
     connect(ui->radioButton_Student, SIGNAL(clicked(bool)), this, SLOT(slots_loginType()));
     connect(ui->radioButton_Teacher, SIGNAL(clicked(bool)), this, SLOT(slots_loginType()));
     connect(ui->radioButton_Administrator, SIGNAL(clicked(bool)), this, SLOT(slots_loginType()));
+
+
 }
 
 StudentInfoSystem::~StudentInfoSystem()
@@ -34,28 +43,26 @@ void StudentInfoSystem::slots_loginType(){
     switch (groupLoginType->checkedId()) {
     case 0:
         loginType = "Students";
+        primaryKeyForQuery = "std_id";
         break;
     case 1:
         loginType = "Teachers";
+        primaryKeyForQuery = "t_id";
         break;
     case 2:
         loginType = "Administrators";
+        primaryKeyForQuery = "ad_name";
         break;
     }
 }
 
 void StudentInfoSystem::on_pushButton_Login_clicked()
 {
-    QString username = ui->lineEdit_Username->text();
+    QString userid = ui->lineEdit_UserID->text();
     QString password = ui->lineEdit_Password->text();
 
-    // Add and connect to Database
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentinfo");
-    db.setUserName("root");
-    db.setPassword("2024mySQL...");
-
+    // get the connection to database.
+    db = DatabaseConnectionSingleton::getConnection();
 
     /*
      * Logic:
@@ -65,10 +72,21 @@ void StudentInfoSystem::on_pushButton_Login_clicked()
      * else
      *      inform the user of the failure
     */
-    if (db.open()) {
+    if (db.isOpen()) {
 
-        QSqlQuery query;
-        QString sqlQuery = "SELECT pwd FROM " + loginType + " WHERE std_name='" + username + "';";
+        QSqlQuery query(db);
+
+        /*
+         * generate sql query statement
+         * Three different login type:
+         * 1. Studuents      PR_KEY: std_id
+         * 2. Teachers       PR_KEY: t_id
+         * 3. Administrators PR_KEY: ad_name
+         *
+         *
+        */
+
+        QString sqlQuery = "SELECT pwd FROM " + loginType + " WHERE " + primaryKeyForQuery + "='" + userid + "';";
 
         qDebug() << sqlQuery;
         query.exec(sqlQuery);
@@ -76,11 +94,22 @@ void StudentInfoSystem::on_pushButton_Login_clicked()
 
         if (query.value(0).toString() == password) {
 
-            hide();
-            sysui = new SystemUI(this);
-            sysui->show();
+            user_id = userid;
+            user_pwd = password;
+            switch (groupLoginType->checkedId()) {
+                case 0:
+                    this->hide();
+                    std_ui = new StudentUI(this);
+                    connect(std_ui,&StudentUI::logout, this, &StudentInfoSystem::return_to_systemUI);
+                    std_ui->show();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
         }else{
-            QMessageBox::warning(this, "Login", "Invalid username or password");
+            QMessageBox::warning(this, "Login", "Invalid user id or password");
         }
     }
     else {
@@ -88,3 +117,13 @@ void StudentInfoSystem::on_pushButton_Login_clicked()
     }
 }
 
+
+void StudentInfoSystem::on_pushButton_Cancel_clicked()
+{
+    QApplication::quit();
+}
+
+void StudentInfoSystem::return_to_systemUI()
+{
+    this->show();
+}

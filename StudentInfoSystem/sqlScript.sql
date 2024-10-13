@@ -93,4 +93,6 @@ INSERT INTO Students VALUE(6, 'ccc', '1995-12-26', 'male', 'Master', 'Informatik
 */
 INSERT INTO Administrators VALUE('me', '123');
 
-SELECT pwd FROM Students WHERE std_name='WZH'
+SELECT pwd FROM Students WHERE std_name='WZH';
+SELECT pwd FROM Students WHERE std_id='1';
+SELECT std_id, std_name, birthday, gender, program, studyField FROM Students WHERE std_id = '1'

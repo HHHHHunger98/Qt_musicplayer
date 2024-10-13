@@ -26,19 +26,6 @@
     <property name="title">
      <string>Student Management System</string>
     </property>
-    <widget class="QPushButton" name="pushButton_Login">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>130</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Login</string>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
@@ -50,21 +37,21 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout_UserID">
         <item>
-         <widget class="QLabel" name="label_Username">
+         <widget class="QLabel" name="label_UserID">
           <property name="text">
-           <string>User Name:</string>
+           <string>User ID:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_Username"/>
+         <widget class="QLineEdit" name="lineEdit_UserID"/>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout_Password">
         <item>
          <widget class="QLabel" name="label_Password">
           <property name="text">
@@ -79,7 +66,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -88,7 +75,7 @@
        <height>21</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="login_layout">
+     <layout class="QHBoxLayout" name="horizontalLayout_loginType">
       <item>
        <widget class="QRadioButton" name="radioButton_Student">
         <property name="text">
@@ -107,6 +94,32 @@
        <widget class="QRadioButton" name="radioButton_Administrator">
         <property name="text">
          <string>Administrator</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>130</y>
+       <width>160</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_Buttons">
+      <item>
+       <widget class="QPushButton" name="pushButton_Login">
+        <property name="text">
+         <string>Login</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_Cancel">
+        <property name="text">
+         <string>Cancel</string>
         </property>
        </widget>
       </item>

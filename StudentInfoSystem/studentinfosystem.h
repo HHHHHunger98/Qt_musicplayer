@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QButtonGroup>
-#include <QSqlDatabase>
 #include "systemui.h"
+#include "studentui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,12 +23,13 @@ public:
 private slots:
     void on_pushButton_Login_clicked();
     void slots_loginType();
+    void on_pushButton_Cancel_clicked();
+    void return_to_systemUI();
 
 private:
     Ui::StudentInfoSystem *ui;
     SystemUI *sysui;
+    StudentUI *std_ui;
     QButtonGroup *groupLoginType;
-    QString loginType;
-    QSqlDatabase db;
 };
 #endif // STUDENTINFOSYSTEM_H
