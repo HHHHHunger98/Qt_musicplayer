@@ -35,14 +35,14 @@
   <widget class="QGroupBox" name="groupBox_personal_info">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>140</x>
      <y>130</y>
      <width>491</width>
      <height>291</height>
     </rect>
    </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string/>
    </property>
    <widget class="QLabel" name="label_personal_info">
     <property name="geometry">
@@ -153,18 +153,38 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>240</y>
-      <width>75</width>
-      <height>23</height>
+      <x>60</x>
+      <y>170</y>
+      <width>381</width>
+      <height>80</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_buttons">
+     <item>
+      <widget class="QPushButton" name="pushButton_courses">
+       <property name="text">
+        <string>Courses</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_exams">
+       <property name="text">
+        <string>Exams</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_logout">
+       <property name="text">
+        <string>Logout</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

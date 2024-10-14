@@ -93,6 +93,30 @@ INSERT INTO Students VALUE(6, 'ccc', '1995-12-26', 'male', 'Master', 'Informatik
 */
 INSERT INTO Administrators VALUE('me', '123');
 
+/* Insert some values into Courses table.
+	c_id int auto_increment,
+    c_name varchar(40),
+    examForm varchar(20),
+    credit tinyint CHECK (credit > 0),
+    classroom varchar(20),
+	PRIMARY KEY (c_id)
+*/
+INSERT INTO Courses VALUE(1, 'Database', 'oral exam', 6, 'APB 1006');
+INSERT INTO Courses VALUE(2, 'AI', 'exam + exercise', 6, 'APB 1007');
+INSERT INTO Courses VALUE(3, 'Software Engineering', 'exam + presentation', 4, 'APB 2007');
+
+/* Insert some values into Enrollment table.
+	std_id int auto_increment,
+    c_id int,
+    CONSTRAINT PK_Enrollment PRIMARY KEY(std_id, c_id)
+*/
+INSERT INTO Enrollment VALUE(1, 1);
+INSERT INTO Enrollment VALUE(1, 2);
+INSERT INTO Enrollment VALUE(1, 3);
+
 SELECT pwd FROM Students WHERE std_name='WZH';
 SELECT pwd FROM Students WHERE std_id='1';
-SELECT std_id, std_name, birthday, gender, program, studyField FROM Students WHERE std_id = '1'
+SELECT std_id, std_name, birthday, gender, program, studyField FROM Students WHERE std_id = '1';
+SELECT * FROM Enrollment WHERE std_id='1';
+
+SELECT * FROM Courses WHERE c_id IN (SELECT c_id FROM Enrollment WHERE std_id='1');

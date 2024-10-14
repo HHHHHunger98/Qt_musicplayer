@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    courseui_std.cpp \
     databaseconnectionsingleton.cpp \
     globals.cpp \
     main.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     systemui.cpp
 
 HEADERS += \
+    courseui_std.h \
     databaseconnectionsingleton.h \
     globals.h \
     studentinfosystem.h \
@@ -24,6 +26,7 @@ HEADERS += \
     systemui.h
 
 FORMS += \
+    courseui_std.ui \
     studentinfosystem.ui \
     studentui.ui \
     systemui.ui

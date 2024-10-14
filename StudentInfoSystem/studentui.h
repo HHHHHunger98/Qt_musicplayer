@@ -2,6 +2,7 @@
 #define STUDENTUI_H
 
 #include <QDialog>
+#include "courseui_std.h"
 
 namespace Ui {
 class StudentUI;
@@ -21,8 +22,11 @@ signals:
 private slots:
     void on_pushButton_logout_clicked();
 
+    void on_pushButton_courses_clicked();
+
 private:
     Ui::StudentUI *ui;
+    courseui_std *c_std_ui;
 };
 
 #endif // STUDENTUI_H

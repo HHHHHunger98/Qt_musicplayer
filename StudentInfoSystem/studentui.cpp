@@ -48,3 +48,10 @@ void StudentUI::on_pushButton_logout_clicked()
     StudentUI::close();
 }
 
+
+void StudentUI::on_pushButton_courses_clicked()
+{
+    c_std_ui = new courseui_std(this);
+    c_std_ui->show();
+}
+
