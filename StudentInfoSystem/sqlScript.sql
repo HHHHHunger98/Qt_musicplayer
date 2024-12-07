@@ -104,6 +104,9 @@ INSERT INTO Administrators VALUE('me', '123');
 INSERT INTO Courses VALUE(1, 'Database', 'oral exam', 6, 'APB 1006');
 INSERT INTO Courses VALUE(2, 'AI', 'exam + exercise', 6, 'APB 1007');
 INSERT INTO Courses VALUE(3, 'Software Engineering', 'exam + presentation', 4, 'APB 2007');
+INSERT INTO Courses VALUE(4, 'Computer Graphic', 'oral exam', 6, 'APB 1067');
+INSERT INTO Courses VALUE(5, 'Compiler Construction', 'oral exam', 6, 'APB 2006');
+INSERT INTO Courses VALUE(6, 'Operating System', 'oral exam', 6, 'APB 2106');
 
 /* Insert some values into Enrollment table.
 	std_id int auto_increment,
